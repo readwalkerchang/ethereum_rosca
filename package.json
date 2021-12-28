@@ -1,0 +1,23 @@
+{
+  "name": "ethereum_rosca",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/readwalkerchang/ethereum_rosca.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/readwalkerchang/ethereum_rosca/issues"
+  },
+  "homepage": "https://github.com/readwalkerchang/ethereum_rosca#readme",
+  "dependencies": {
+    "jest": "^27.4.5"
+  }
+}
