@@ -14,6 +14,23 @@ const JUMPI = 'JUMPI'; //JUMP IF(Conditional Jumps Instructions)
 const EXECUTION_COMPLETE = 'Execution complete';
 const EXECUTION_LIMIT = 999;
 
+const OPCODE_MAP = {
+     STOP,
+     ADD,
+     SUB,
+     MUL,
+     DIV,
+     PUSH,
+     LT,
+     GT, 
+     EQ, 
+     AND,
+     OR,
+     JUMP,
+     JUMPI,
+     EXECUTION_COMPLETE,
+     EXECUTION_LIMIT
+    }
 
 
 class Interpreter{
@@ -28,6 +45,7 @@ class Interpreter{
 
     jump(){
         const destination = this.state.stack.pop();
+        //validation rule
         if(destination < 0 || destination > this.state.code.length){
             throw new Error(`Invalid destination: ${destination}` );
         }
@@ -39,6 +57,7 @@ class Interpreter{
         while(this.state.counter < this.state.code.length){
             this.state.executionCount++;
 
+            //validation rule
             if (this.state.executionCount > EXECUTION_LIMIT) {
               throw new Error(
                 `Check for an infinite loop. Execution limit of ${EXECUTION_LIMIT} exceeded`
@@ -108,6 +127,8 @@ class Interpreter{
     }
 }
 
+Interpreter.OPCODE_MAP = OPCODE_MAP;
+module.exports = Interpreter;
 
 // code = [PUSH, 2, PUSH, 3, LT, STOP];
 // result = new Interpreter().runCode(code);
@@ -152,9 +173,9 @@ class Interpreter{
 //   console.log('Invalid PUSH error:', error.message);
 // }
 
-code = [PUSH, 0, JUMP, STOP];
-try {
-  new Interpreter().runCode(code);
-} catch (error) {
-  console.log('Expected invalid execution error:', error.message);
-}
+// code = [PUSH, 0, JUMP, STOP];
+// try {
+//   new Interpreter().runCode(code);
+// } catch (error) {
+//   console.log('Expected invalid execution error:', error.message);
+// }
