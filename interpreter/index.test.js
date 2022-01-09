@@ -21,7 +21,16 @@ describe('Interpreter', () => {
   describe('runCode()', () => {
     describe('and the code inludes ADD', () => {
       it('adds two values', () => {
-        expect(2+3).toEqual(5);
+        expect(
+          new Interpreter().runCode([PUSH, 2, PUSH, 3, ADD, STOP])
+        ).toEqual(5);
+      });
+    });
+    describe('and the code inludes SUB', () => {
+      it('adds two values', () => {
+        expect(
+          new Interpreter().runCode([PUSH, 2, PUSH, 3, SUB, STOP])
+        ).toEqual(1);
       });
     });
   });
